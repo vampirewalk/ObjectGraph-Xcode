@@ -6,7 +6,7 @@ This plugin is based on [objc_dep](https://github.com/nst/objc_dep) and [Graphvi
 
 ![Example](https://raw.githubusercontent.com/vampirewalk/ObjectGraph-Xcode/master/ObjectGraph.png)
 
-Thanks to kattrali, I get inspiration and import some code from cocoapods-xcode-plugin.
+Thanks to kattrali, I get inspiration and import some code from [cocoapods-xcode-plugin](https://github.com/kattrali/cocoapods-xcode-plugin).
 
 ## Install 
 Install Graphviz
