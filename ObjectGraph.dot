@@ -1,0 +1,18 @@
+digraph G {
+	node [shape=box];
+	"CCPShellHandler" -> "CCPRunOperation";
+	"CCPDocumentationManager" -> {};
+	"CCPRunOperation" -> {};
+	"ObjectGraph" -> "CCPProject";
+	"ObjectGraph" -> "CCPWorkspaceManager";
+	"ObjectGraph" -> "CCPShellHandler";
+	"ObjectGraph" -> "CCPXCodeConsole";
+	"CCPXCodeConsole" -> {};
+	
+	"ObjectGraph-Prefix" [color=red];
+	"ObjectGraph-Prefix" -> "CCPXCodeConsole" [color=red];
+	
+	edge [color=blue, dir=both];
+	"CCPProject" -> "CCPWorkspaceManager";
+}
+

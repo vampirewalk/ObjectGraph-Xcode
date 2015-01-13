@@ -1,0 +1,6 @@
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+
+    #import "CCPXCodeConsole.h"
+#endif
