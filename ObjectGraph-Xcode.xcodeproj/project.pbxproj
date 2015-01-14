@@ -11,7 +11,6 @@
 		31F31C131A66047000E0D942 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 31F31C111A66047000E0D942 /* README.md */; };
 		F83F75CF1A654E0100CC8DE3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75CE1A654E0100CC8DE3 /* AppKit.framework */; };
 		F83F75D11A654E0100CC8DE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75D01A654E0100CC8DE3 /* Foundation.framework */; };
-		F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */; };
 		F83F75D91A654E0100CC8DE3 /* ObjectGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75D81A654E0100CC8DE3 /* ObjectGraph.m */; };
 		F83F75EC1A654E5A00CC8DE3 /* VWKDocumentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E01A654E5A00CC8DE3 /* VWKDocumentationManager.m */; };
 		F83F75ED1A654E5A00CC8DE3 /* VWKProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E21A654E5A00CC8DE3 /* VWKProject.m */; };
@@ -169,7 +168,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F83F75C61A654E0100CC8DE3 /* Build configuration list for PBXProject "ObjectGraph" */;
+			buildConfigurationList = F83F75C61A654E0100CC8DE3 /* Build configuration list for PBXProject "ObjectGraph-Xcode" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -192,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F31C121A66047000E0D942 /* objc_dep.py in Resources */,
-				F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +317,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F83F75C61A654E0100CC8DE3 /* Build configuration list for PBXProject "ObjectGraph" */ = {
+		F83F75C61A654E0100CC8DE3 /* Build configuration list for PBXProject "ObjectGraph-Xcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F83F75DA1A654E0100CC8DE3 /* Debug */,
