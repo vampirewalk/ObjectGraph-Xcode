@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31F31C0D1A66016300E0D942 /* objc_dep.py in Resources */ = {isa = PBXBuildFile; fileRef = 31F31C0B1A66016300E0D942 /* objc_dep.py */; };
-		31F31C0E1A66016300E0D942 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 31F31C0C1A66016300E0D942 /* README.md */; };
+		31F31C121A66047000E0D942 /* objc_dep.py in Resources */ = {isa = PBXBuildFile; fileRef = 31F31C101A66047000E0D942 /* objc_dep.py */; };
+		31F31C131A66047000E0D942 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 31F31C111A66047000E0D942 /* README.md */; };
 		F83F75CF1A654E0100CC8DE3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75CE1A654E0100CC8DE3 /* AppKit.framework */; };
 		F83F75D11A654E0100CC8DE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75D01A654E0100CC8DE3 /* Foundation.framework */; };
 		F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31F31C0B1A66016300E0D942 /* objc_dep.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = objc_dep.py; sourceTree = "<group>"; };
-		31F31C0C1A66016300E0D942 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		31F31C101A66047000E0D942 /* objc_dep.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = objc_dep.py; sourceTree = "<group>"; };
+		31F31C111A66047000E0D942 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F83F75CB1A654E0100CC8DE3 /* ObjectGraph.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjectGraph.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83F75CE1A654E0100CC8DE3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		F83F75D01A654E0100CC8DE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -59,11 +59,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31F31C0A1A66016300E0D942 /* objc_dep */ = {
+		31F31C0F1A66047000E0D942 /* objc_dep */ = {
 			isa = PBXGroup;
 			children = (
-				31F31C0B1A66016300E0D942 /* objc_dep.py */,
-				31F31C0C1A66016300E0D942 /* README.md */,
+				31F31C101A66047000E0D942 /* objc_dep.py */,
+				31F31C111A66047000E0D942 /* README.md */,
 			);
 			path = objc_dep;
 			sourceTree = "<group>";
@@ -97,7 +97,7 @@
 		F83F75D21A654E0100CC8DE3 /* ObjectGraph */ = {
 			isa = PBXGroup;
 			children = (
-				31F31C0A1A66016300E0D942 /* objc_dep */,
+				31F31C0F1A66047000E0D942 /* objc_dep */,
 				F83F75F21A654E6700CC8DE3 /* Helper */,
 				F83F75D71A654E0100CC8DE3 /* ObjectGraph.h */,
 				F83F75D81A654E0100CC8DE3 /* ObjectGraph.m */,
@@ -191,7 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31F31C0D1A66016300E0D942 /* objc_dep.py in Resources */,
+				31F31C121A66047000E0D942 /* objc_dep.py in Resources */,
 				F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +209,7 @@
 				F83F75F11A654E5A00CC8DE3 /* CCPXCodeConsole.m in Sources */,
 				F83F75D91A654E0100CC8DE3 /* ObjectGraph.m in Sources */,
 				F83F75EC1A654E5A00CC8DE3 /* CCPDocumentationManager.m in Sources */,
-				31F31C0E1A66016300E0D942 /* README.md in Sources */,
+				31F31C131A66047000E0D942 /* README.md in Sources */,
 				F83F75ED1A654E5A00CC8DE3 /* CCPProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
