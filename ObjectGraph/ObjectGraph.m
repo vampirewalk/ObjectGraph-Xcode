@@ -134,7 +134,6 @@ static NSString *OPEN_EXECUTABLE = @"open";
         [console log: @"Source Code Directory Does Not Exist."];
         self.sourceCodePath = projectPath;
     }
-    [console log: [@"Source Code Path:   " stringByAppendingString:_sourceCodePath]];
     
     NSString *dotFileName = [project.projectName stringByAppendingString:@".dot"];
     NSString *pngFileName = [project.projectName stringByAppendingString:@".png"];
