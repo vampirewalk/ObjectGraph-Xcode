@@ -11,12 +11,11 @@ The default path of source code parsing is project root path, you can set new pa
 For example, if you just want to parse your product class, not test class or external library class in Pods directory, you can set path to directory which contains your product class and execute "Draw Object Graph" again.
 
 ## Install 
- 1. Install Graphviz
+First step, install Graphviz
 ```
 brew install graphviz
 ```
-
- 2. Install it via [Alcatraz](http://alcatraz.io/)
+Second, install ObjectGraph-Xcode via [Alcatraz](http://alcatraz.io/)
 or
 Clone and build the project, then restart Xcode.
 
