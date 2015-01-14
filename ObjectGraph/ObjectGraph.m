@@ -129,12 +129,12 @@ static NSString *OPEN_EXECUTABLE = @"open";
     NSString *projectPath = project.directoryPath;
     NSFileManager *manager = [NSFileManager defaultManager];
     VWKXCodeConsole *console = [VWKXCodeConsole consoleForKeyWindow];
-    [console log: [@"Source Code Path:   " stringByAppendingString:_sourceCodePath]];
-    if(![manager fileExistsAtPath:_sourceCodePath])
+    if(_sourceCodePath == nil || ![manager fileExistsAtPath:_sourceCodePath])
     {
         [console log: @"Source Code Directory Does Not Exist."];
         self.sourceCodePath = projectPath;
     }
+    [console log: [@"Source Code Path:   " stringByAppendingString:_sourceCodePath]];
     
     NSString *dotFileName = [project.projectName stringByAppendingString:@".dot"];
     NSString *pngFileName = [project.projectName stringByAppendingString:@".png"];
