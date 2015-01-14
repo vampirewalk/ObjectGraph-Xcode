@@ -127,6 +127,15 @@ static NSString *OPEN_EXECUTABLE = @"open";
 {
     CCPProject *project = [CCPProject projectForKeyWindow];
     NSString *projectPath = project.directoryPath;
+    NSFileManager *manager = [NSFileManager defaultManager];
+    CCPXCodeConsole *console = [CCPXCodeConsole consoleForKeyWindow];
+    [console log: [@"Source Code Path:   " stringByAppendingString:_sourceCodePath]];
+    if(![manager fileExistsAtPath:_sourceCodePath])
+    {
+        [console log: @"Source Code Directory Does Not Exist."];
+        self.sourceCodePath = projectPath;
+    }
+    
     NSString *dotFileName = [project.projectName stringByAppendingString:@".dot"];
     NSString *pngFileName = [project.projectName stringByAppendingString:@".png"];
     NSString *dotFileScriptPath = [[ObjectGraph pluginBundle] pathForResource:@"objc_dep" ofType:@"py"];
@@ -161,7 +170,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
         };
         
         [CCPShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
-                                withArgs:@[dotFileScriptPath, project.directoryPath, @"-o", dotFileName]
+                                withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", dotFileName]
                                directory:_sourceCodePath
                               completion:convertToPNGBlock];
     }
