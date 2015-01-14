@@ -1,5 +1,5 @@
 //
-//  CCPDocumentationManager.m
+//  CCPDocumentationManager.h
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,16 +21,10 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import "CCPDocumentationManager.h"
+#import <Foundation/Foundation.h>
 
-static NSString *RELATIVE_DOCSET_PATH  = @"/Library/Developer/Shared/Documentation/DocSets/";
+@interface VWKDocumentationManager : NSObject
 
-@implementation CCPDocumentationManager
-
-
-+ (NSString *)docsetInstallPath
-{
-	return [NSString pathWithComponents:@[NSHomeDirectory(), RELATIVE_DOCSET_PATH]];
-}
++ (NSString *)docsetInstallPath;
 
 @end

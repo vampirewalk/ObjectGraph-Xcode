@@ -23,22 +23,22 @@
 
 #import <objc/runtime.h>
 
-#import "CCPProject.h"
+#import "VWKProject.h"
 
-#import "CCPWorkspaceManager.h"
+#import "VWKWorkspaceManager.h"
 
-@implementation CCPProject
+@implementation VWKProject
 
 + (instancetype)projectForKeyWindow
 {
-	id workspace = [CCPWorkspaceManager workspaceForKeyWindow];
+	id workspace = [VWKWorkspaceManager workspaceForKeyWindow];
 
 	id contextManager = [workspace valueForKey:@"_runContextManager"];
 	for (id scheme in[contextManager valueForKey:@"runContexts"]) {
 		NSString *schemeName = [scheme valueForKey:@"name"];
 		if (![schemeName hasPrefix:@"Pods-"]) {
-            NSString *path = [CCPWorkspaceManager directoryPathForWorkspace:workspace];
-			return [[CCPProject alloc] initWithName:schemeName path:path];
+            NSString *path = [VWKWorkspaceManager directoryPathForWorkspace:workspace];
+			return [[VWKProject alloc] initWithName:schemeName path:path];
 		}
 	}
 

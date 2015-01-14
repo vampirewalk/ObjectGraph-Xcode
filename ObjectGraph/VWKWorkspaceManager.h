@@ -1,5 +1,5 @@
 //
-//  CCPRunOperation.h
+//  CCPWorkspaceManager.h
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,9 +21,13 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
+@interface VWKWorkspaceManager : NSObject
 
-@interface CCPRunOperation : NSOperation
++ (id)workspaceForKeyWindow;
 
-- (id)initWithTask:(NSTask *)task;
++ (NSArray *)installedPodNamesInCurrentWorkspace;
+
++ (NSString *)currentWorkspaceDirectoryPath;
++ (NSString *)directoryPathForWorkspace:(id)workspace;
 
 @end

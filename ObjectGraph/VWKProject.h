@@ -1,5 +1,5 @@
 //
-//  CCPWorkspaceManager.h
+//  CCPWorkspace.h
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,13 +21,31 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-@interface CCPWorkspaceManager : NSObject
+@interface VWKProject : NSObject
 
-+ (id)workspaceForKeyWindow;
+@property (nonatomic, strong) NSString *directoryPath;
 
-+ (NSArray *)installedPodNamesInCurrentWorkspace;
+@property (nonatomic, strong) NSString *podspecPath;
+@property (nonatomic, strong) NSString *podfilePath;
 
-+ (NSString *)currentWorkspaceDirectoryPath;
-+ (NSString *)directoryPathForWorkspace:(id)workspace;
+@property (nonatomic, readonly) NSString *workspacePath;
+
+@property (nonatomic, strong) NSString *projectName;
+
+@property (nonatomic, strong) NSDictionary *infoDictionary;
+
++ (instancetype)projectForKeyWindow;
+
+- (id)initWithName:(NSString *)name
+              path:(NSString *)path;
+
+- (void)createPodspecFromTemplate:(NSString *)_template;
+
+- (BOOL)hasPodfile;
+- (BOOL)hasPodspecFile;
+
+- (BOOL)containsFileWithName:(NSString *)fileName;
+
+
 
 @end

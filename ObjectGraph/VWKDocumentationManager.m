@@ -1,5 +1,5 @@
 //
-//  CCPShellHandler.h
+//  CCPDocumentationManager.m
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,10 +21,16 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "VWKDocumentationManager.h"
 
-@interface CCPShellHandler : NSObject
+static NSString *RELATIVE_DOCSET_PATH  = @"/Library/Developer/Shared/Documentation/DocSets/";
 
-+ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t))completion;
+@implementation VWKDocumentationManager
+
+
++ (NSString *)docsetInstallPath
+{
+	return [NSString pathWithComponents:@[NSHomeDirectory(), RELATIVE_DOCSET_PATH]];
+}
 
 @end

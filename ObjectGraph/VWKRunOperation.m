@@ -21,16 +21,16 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import "CCPRunOperation.h"
+#import "VWKRunOperation.h"
 
-@interface CCPRunOperation ()
+@interface VWKRunOperation ()
 {
 	BOOL isExecuting;
 	BOOL isFinished;
 }
 
 
-@property (retain) CCPXCodeConsole *xcodeConsole;
+@property (retain) VWKXCodeConsole *xcodeConsole;
 
 @property (retain) NSTask *task;
 @property (retain) id taskStandardOutDataAvailableObserver;
@@ -40,7 +40,7 @@
 @end
 
 
-@implementation CCPRunOperation
+@implementation VWKRunOperation
 
 #pragma mark -
 #pragma mark NSOperation
@@ -49,7 +49,7 @@
 {
 	self = [super init];
 	if (self) {
-		self.xcodeConsole = [CCPXCodeConsole consoleForKeyWindow];
+		self.xcodeConsole = [VWKXCodeConsole consoleForKeyWindow];
 		self.task = task;
 	}
 	return self;

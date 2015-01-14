@@ -1,5 +1,5 @@
 //
-//  CCPShellHandler.m
+//  CCPShellHandler.h
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,40 +21,10 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import "CCPShellHandler.h"
+#import <Foundation/Foundation.h>
 
-#import <AppKit/AppKit.h>
+@interface VWKShellHandler : NSObject
 
-#import "CCPRunOperation.h"
-
-static NSOperationQueue *operationQueue;
-
-@implementation CCPShellHandler
-
-+ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t))completion
-{
-	if (operationQueue == nil) {
-		operationQueue = [NSOperationQueue new];
-	}
-    
-	NSTask *task = [NSTask new];
-    
-    NSMutableDictionary * environment = [[[NSProcessInfo processInfo] environment] mutableCopy];
-    environment[@"LC_ALL"]=@"en_US.UTF-8";
-    [task setEnvironment:environment];
-    
-	task.currentDirectoryPath = directory;
-	task.launchPath = command;
-	task.arguments  = args;
-    
-    
-	CCPRunOperation *operation = [[CCPRunOperation alloc] initWithTask:task];
-    operation.completionBlock = ^{
-        if (completion) {
-            completion(task);
-        }
-    };
-	[operationQueue addOperation:operation];
-}
++ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t))completion;
 
 @end

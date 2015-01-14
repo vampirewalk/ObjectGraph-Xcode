@@ -1,5 +1,5 @@
 //
-//  CCPWorkspace.h
+//  CCPShellHandler.m
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,31 +21,40 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-@interface CCPProject : NSObject
+#import "VWKShellHandler.h"
 
-@property (nonatomic, strong) NSString *directoryPath;
+#import <AppKit/AppKit.h>
 
-@property (nonatomic, strong) NSString *podspecPath;
-@property (nonatomic, strong) NSString *podfilePath;
+#import "VWKRunOperation.h"
 
-@property (nonatomic, readonly) NSString *workspacePath;
+static NSOperationQueue *operationQueue;
 
-@property (nonatomic, strong) NSString *projectName;
+@implementation VWKShellHandler
 
-@property (nonatomic, strong) NSDictionary *infoDictionary;
-
-+ (instancetype)projectForKeyWindow;
-
-- (id)initWithName:(NSString *)name
-              path:(NSString *)path;
-
-- (void)createPodspecFromTemplate:(NSString *)_template;
-
-- (BOOL)hasPodfile;
-- (BOOL)hasPodspecFile;
-
-- (BOOL)containsFileWithName:(NSString *)fileName;
-
-
++ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t))completion
+{
+	if (operationQueue == nil) {
+		operationQueue = [NSOperationQueue new];
+	}
+    
+	NSTask *task = [NSTask new];
+    
+    NSMutableDictionary * environment = [[[NSProcessInfo processInfo] environment] mutableCopy];
+    environment[@"LC_ALL"]=@"en_US.UTF-8";
+    [task setEnvironment:environment];
+    
+	task.currentDirectoryPath = directory;
+	task.launchPath = command;
+	task.arguments  = args;
+    
+    
+	VWKRunOperation *operation = [[VWKRunOperation alloc] initWithTask:task];
+    operation.completionBlock = ^{
+        if (completion) {
+            completion(task);
+        }
+    };
+	[operationQueue addOperation:operation];
+}
 
 @end

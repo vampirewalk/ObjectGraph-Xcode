@@ -21,13 +21,13 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import "CCPWorkspaceManager.h"
+#import "VWKWorkspaceManager.h"
 
-#import "CCPProject.h"
+#import "VWKProject.h"
 
 static NSString *PODFILE = @"Podfile";
 
-@implementation CCPWorkspaceManager
+@implementation VWKWorkspaceManager
 
 + (NSArray *)installedPodNamesInCurrentWorkspace
 {

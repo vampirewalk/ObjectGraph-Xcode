@@ -21,11 +21,11 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import "CCPXCodeConsole.h"
+#import "VWKXCodeConsole.h"
 
 static NSMutableDictionary *sharedInstances;
 
-@interface CCPXCodeConsole ()
+@interface VWKXCodeConsole ()
 
 @property (retain, nonatomic) NSTextView *console;
 @property (strong, nonatomic) NSString *windowIdentifier;
@@ -33,7 +33,7 @@ static NSMutableDictionary *sharedInstances;
 @end
 
 
-@implementation CCPXCodeConsole
+@implementation VWKXCodeConsole
 
 - (id)initWithIdentifier:(NSString *)identifier
 {
@@ -118,7 +118,7 @@ static NSMutableDictionary *sharedInstances;
         sharedInstances = [[NSMutableDictionary alloc] init];
 
     if (!sharedInstances[key]) {
-        CCPXCodeConsole *console = [[CCPXCodeConsole alloc] initWithIdentifier:key];
+        VWKXCodeConsole *console = [[VWKXCodeConsole alloc] initWithIdentifier:key];
         [sharedInstances setObject:console forKey:key];
     }
 

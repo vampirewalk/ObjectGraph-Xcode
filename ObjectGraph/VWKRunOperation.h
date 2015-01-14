@@ -1,5 +1,5 @@
 //
-//  CCPXCodeConsole.h
+//  CCPRunOperation.h
 //
 //  Copyright (c) 2013 Delisa Mason. http://delisa.me
 //
@@ -21,16 +21,9 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //  IN THE SOFTWARE.
 
-#import <AppKit/AppKit.h>
 
-@interface CCPXCodeConsole : NSObject
+@interface VWKRunOperation : NSOperation
 
-+ (instancetype)consoleForKeyWindow;
-
-- (void)appendText:(NSString *)text;
-- (void)appendText:(NSString *)text color:(NSColor *)color;
-
-- (void)log:(id)obj;
-- (void)error:(id)obj;
+- (id)initWithTask:(NSTask *)task;
 
 @end

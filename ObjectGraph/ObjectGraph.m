@@ -24,10 +24,10 @@
 //  IN THE SOFTWARE.
 
 #import "ObjectGraph.h"
-#import "CCPShellHandler.h"
-#import "CCPWorkspaceManager.h"
-#import "CCPProject.h"
-#import "CCPXCodeConsole.h"
+#import "VWKShellHandler.h"
+#import "VWKWorkspaceManager.h"
+#import "VWKProject.h"
+#import "VWKXCodeConsole.h"
 
 static ObjectGraph *sharedPlugin;
 
@@ -91,7 +91,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
 
 - (void)setDefaultSourceCodePathPath
 {
-    CCPProject *project = [CCPProject projectForKeyWindow];
+    VWKProject *project = [VWKProject projectForKeyWindow];
     self.sourceCodePath = project.directoryPath;
 }
 
@@ -125,10 +125,10 @@ static NSString *OPEN_EXECUTABLE = @"open";
 // Sample Action, for menu item:
 - (void)drawObjectGrpah
 {
-    CCPProject *project = [CCPProject projectForKeyWindow];
+    VWKProject *project = [VWKProject projectForKeyWindow];
     NSString *projectPath = project.directoryPath;
     NSFileManager *manager = [NSFileManager defaultManager];
-    CCPXCodeConsole *console = [CCPXCodeConsole consoleForKeyWindow];
+    VWKXCodeConsole *console = [VWKXCodeConsole consoleForKeyWindow];
     [console log: [@"Source Code Path:   " stringByAppendingString:_sourceCodePath]];
     if(![manager fileExistsAtPath:_sourceCodePath])
     {
@@ -142,34 +142,34 @@ static NSString *OPEN_EXECUTABLE = @"open";
     
     if (dotFileScriptPath.length) {
         void(^openBlock)(NSTask *t) = ^(NSTask *t){
-            [CCPShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
+            [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
                                     withArgs:@[pngFileName]
                                    directory:projectPath
                                   completion:nil];
         };
         
         void(^moveDOTFileBlock)(NSTask *t) = ^(NSTask *t){
-            [CCPShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
+            [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
                                     withArgs:@[dotFileName, projectPath]
                                    directory:_sourceCodePath
                                   completion:openBlock];
         };
         
         void(^movePNGFileBlock)(NSTask *t) = ^(NSTask *t){
-            [CCPShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
+            [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
                                     withArgs:@[pngFileName, projectPath]
                                    directory:_sourceCodePath
                                   completion:moveDOTFileBlock];
         };
         
         void(^convertToPNGBlock)(NSTask *t) = ^(NSTask *t){
-            [CCPShellHandler runShellCommand:[USER_LOCAL_BIN_PATH stringByAppendingPathComponent:GRAPHVIZ_EXECUTABLE]
+            [VWKShellHandler runShellCommand:[USER_LOCAL_BIN_PATH stringByAppendingPathComponent:GRAPHVIZ_EXECUTABLE]
                                     withArgs:@[@"-Tpng", dotFileName, @"-o", pngFileName]
                                    directory:_sourceCodePath
                                   completion:movePNGFileBlock];
         };
         
-        [CCPShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
+        [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
                                 withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", dotFileName]
                                directory:_sourceCodePath
                               completion:convertToPNGBlock];

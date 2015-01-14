@@ -2,5 +2,5 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 
-    #import "CCPXCodeConsole.h"
+    #import "VWKXCodeConsole.h"
 #endif

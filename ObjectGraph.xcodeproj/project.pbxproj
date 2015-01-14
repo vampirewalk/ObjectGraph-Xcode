@@ -13,12 +13,12 @@
 		F83F75D11A654E0100CC8DE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75D01A654E0100CC8DE3 /* Foundation.framework */; };
 		F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */; };
 		F83F75D91A654E0100CC8DE3 /* ObjectGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75D81A654E0100CC8DE3 /* ObjectGraph.m */; };
-		F83F75EC1A654E5A00CC8DE3 /* CCPDocumentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E01A654E5A00CC8DE3 /* CCPDocumentationManager.m */; };
-		F83F75ED1A654E5A00CC8DE3 /* CCPProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E21A654E5A00CC8DE3 /* CCPProject.m */; };
-		F83F75EE1A654E5A00CC8DE3 /* CCPRunOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E41A654E5A00CC8DE3 /* CCPRunOperation.m */; };
-		F83F75EF1A654E5A00CC8DE3 /* CCPShellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E61A654E5A00CC8DE3 /* CCPShellHandler.m */; };
-		F83F75F01A654E5A00CC8DE3 /* CCPWorkspaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E81A654E5A00CC8DE3 /* CCPWorkspaceManager.m */; };
-		F83F75F11A654E5A00CC8DE3 /* CCPXCodeConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */; };
+		F83F75EC1A654E5A00CC8DE3 /* VWKDocumentationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E01A654E5A00CC8DE3 /* VWKDocumentationManager.m */; };
+		F83F75ED1A654E5A00CC8DE3 /* VWKProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E21A654E5A00CC8DE3 /* VWKProject.m */; };
+		F83F75EE1A654E5A00CC8DE3 /* VWKRunOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E41A654E5A00CC8DE3 /* VWKRunOperation.m */; };
+		F83F75EF1A654E5A00CC8DE3 /* VWKShellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E61A654E5A00CC8DE3 /* VWKShellHandler.m */; };
+		F83F75F01A654E5A00CC8DE3 /* VWKWorkspaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E81A654E5A00CC8DE3 /* VWKWorkspaceManager.m */; };
+		F83F75F11A654E5A00CC8DE3 /* VWKXCodeConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75EA1A654E5A00CC8DE3 /* VWKXCodeConsole.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,18 +31,18 @@
 		F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ObjectGraph.xcscheme; path = ObjectGraph.xcodeproj/xcshareddata/xcschemes/ObjectGraph.xcscheme; sourceTree = SOURCE_ROOT; };
 		F83F75D71A654E0100CC8DE3 /* ObjectGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectGraph.h; sourceTree = "<group>"; };
 		F83F75D81A654E0100CC8DE3 /* ObjectGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectGraph.m; sourceTree = "<group>"; };
-		F83F75DF1A654E5A00CC8DE3 /* CCPDocumentationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPDocumentationManager.h; sourceTree = "<group>"; };
-		F83F75E01A654E5A00CC8DE3 /* CCPDocumentationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPDocumentationManager.m; sourceTree = "<group>"; };
-		F83F75E11A654E5A00CC8DE3 /* CCPProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPProject.h; sourceTree = "<group>"; };
-		F83F75E21A654E5A00CC8DE3 /* CCPProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPProject.m; sourceTree = "<group>"; };
-		F83F75E31A654E5A00CC8DE3 /* CCPRunOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPRunOperation.h; sourceTree = "<group>"; };
-		F83F75E41A654E5A00CC8DE3 /* CCPRunOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPRunOperation.m; sourceTree = "<group>"; };
-		F83F75E51A654E5A00CC8DE3 /* CCPShellHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPShellHandler.h; sourceTree = "<group>"; };
-		F83F75E61A654E5A00CC8DE3 /* CCPShellHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPShellHandler.m; sourceTree = "<group>"; };
-		F83F75E71A654E5A00CC8DE3 /* CCPWorkspaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPWorkspaceManager.h; sourceTree = "<group>"; };
-		F83F75E81A654E5A00CC8DE3 /* CCPWorkspaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPWorkspaceManager.m; sourceTree = "<group>"; };
-		F83F75E91A654E5A00CC8DE3 /* CCPXCodeConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPXCodeConsole.h; sourceTree = "<group>"; };
-		F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPXCodeConsole.m; sourceTree = "<group>"; };
+		F83F75DF1A654E5A00CC8DE3 /* VWKDocumentationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKDocumentationManager.h; sourceTree = "<group>"; };
+		F83F75E01A654E5A00CC8DE3 /* VWKDocumentationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKDocumentationManager.m; sourceTree = "<group>"; };
+		F83F75E11A654E5A00CC8DE3 /* VWKProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKProject.h; sourceTree = "<group>"; };
+		F83F75E21A654E5A00CC8DE3 /* VWKProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKProject.m; sourceTree = "<group>"; };
+		F83F75E31A654E5A00CC8DE3 /* VWKRunOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKRunOperation.h; sourceTree = "<group>"; };
+		F83F75E41A654E5A00CC8DE3 /* VWKRunOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKRunOperation.m; sourceTree = "<group>"; };
+		F83F75E51A654E5A00CC8DE3 /* VWKShellHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKShellHandler.h; sourceTree = "<group>"; };
+		F83F75E61A654E5A00CC8DE3 /* VWKShellHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKShellHandler.m; sourceTree = "<group>"; };
+		F83F75E71A654E5A00CC8DE3 /* VWKWorkspaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKWorkspaceManager.h; sourceTree = "<group>"; };
+		F83F75E81A654E5A00CC8DE3 /* VWKWorkspaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKWorkspaceManager.m; sourceTree = "<group>"; };
+		F83F75E91A654E5A00CC8DE3 /* VWKXCodeConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWKXCodeConsole.h; sourceTree = "<group>"; };
+		F83F75EA1A654E5A00CC8DE3 /* VWKXCodeConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWKXCodeConsole.m; sourceTree = "<group>"; };
 		F83F75EB1A654E5A00CC8DE3 /* ObjectGraph-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjectGraph-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,18 +119,18 @@
 		F83F75F21A654E6700CC8DE3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				F83F75DF1A654E5A00CC8DE3 /* CCPDocumentationManager.h */,
-				F83F75E01A654E5A00CC8DE3 /* CCPDocumentationManager.m */,
-				F83F75E11A654E5A00CC8DE3 /* CCPProject.h */,
-				F83F75E21A654E5A00CC8DE3 /* CCPProject.m */,
-				F83F75E31A654E5A00CC8DE3 /* CCPRunOperation.h */,
-				F83F75E41A654E5A00CC8DE3 /* CCPRunOperation.m */,
-				F83F75E51A654E5A00CC8DE3 /* CCPShellHandler.h */,
-				F83F75E61A654E5A00CC8DE3 /* CCPShellHandler.m */,
-				F83F75E71A654E5A00CC8DE3 /* CCPWorkspaceManager.h */,
-				F83F75E81A654E5A00CC8DE3 /* CCPWorkspaceManager.m */,
-				F83F75E91A654E5A00CC8DE3 /* CCPXCodeConsole.h */,
-				F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */,
+				F83F75DF1A654E5A00CC8DE3 /* VWKDocumentationManager.h */,
+				F83F75E01A654E5A00CC8DE3 /* VWKDocumentationManager.m */,
+				F83F75E11A654E5A00CC8DE3 /* VWKProject.h */,
+				F83F75E21A654E5A00CC8DE3 /* VWKProject.m */,
+				F83F75E31A654E5A00CC8DE3 /* VWKRunOperation.h */,
+				F83F75E41A654E5A00CC8DE3 /* VWKRunOperation.m */,
+				F83F75E51A654E5A00CC8DE3 /* VWKShellHandler.h */,
+				F83F75E61A654E5A00CC8DE3 /* VWKShellHandler.m */,
+				F83F75E71A654E5A00CC8DE3 /* VWKWorkspaceManager.h */,
+				F83F75E81A654E5A00CC8DE3 /* VWKWorkspaceManager.m */,
+				F83F75E91A654E5A00CC8DE3 /* VWKXCodeConsole.h */,
+				F83F75EA1A654E5A00CC8DE3 /* VWKXCodeConsole.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -203,14 +203,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F83F75F01A654E5A00CC8DE3 /* CCPWorkspaceManager.m in Sources */,
-				F83F75EE1A654E5A00CC8DE3 /* CCPRunOperation.m in Sources */,
-				F83F75EF1A654E5A00CC8DE3 /* CCPShellHandler.m in Sources */,
-				F83F75F11A654E5A00CC8DE3 /* CCPXCodeConsole.m in Sources */,
+				F83F75F01A654E5A00CC8DE3 /* VWKWorkspaceManager.m in Sources */,
+				F83F75EE1A654E5A00CC8DE3 /* VWKRunOperation.m in Sources */,
+				F83F75EF1A654E5A00CC8DE3 /* VWKShellHandler.m in Sources */,
+				F83F75F11A654E5A00CC8DE3 /* VWKXCodeConsole.m in Sources */,
 				F83F75D91A654E0100CC8DE3 /* ObjectGraph.m in Sources */,
-				F83F75EC1A654E5A00CC8DE3 /* CCPDocumentationManager.m in Sources */,
+				F83F75EC1A654E5A00CC8DE3 /* VWKDocumentationManager.m in Sources */,
 				31F31C131A66047000E0D942 /* README.md in Sources */,
-				F83F75ED1A654E5A00CC8DE3 /* CCPProject.m in Sources */,
+				F83F75ED1A654E5A00CC8DE3 /* VWKProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
