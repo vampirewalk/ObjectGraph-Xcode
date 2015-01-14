@@ -131,7 +131,6 @@ static NSString *OPEN_EXECUTABLE = @"open";
     VWKXCodeConsole *console = [VWKXCodeConsole consoleForKeyWindow];
     if(_sourceCodePath == nil || ![manager fileExistsAtPath:_sourceCodePath])
     {
-        [console log: @"Source Code Directory Does Not Exist."];
         self.sourceCodePath = projectPath;
     }
     
