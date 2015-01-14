@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31F31C0D1A66016300E0D942 /* objc_dep.py in Resources */ = {isa = PBXBuildFile; fileRef = 31F31C0B1A66016300E0D942 /* objc_dep.py */; };
+		31F31C0E1A66016300E0D942 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 31F31C0C1A66016300E0D942 /* README.md */; };
 		F83F75CF1A654E0100CC8DE3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75CE1A654E0100CC8DE3 /* AppKit.framework */; };
 		F83F75D11A654E0100CC8DE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F83F75D01A654E0100CC8DE3 /* Foundation.framework */; };
 		F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */; };
@@ -17,11 +19,11 @@
 		F83F75EF1A654E5A00CC8DE3 /* CCPShellHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E61A654E5A00CC8DE3 /* CCPShellHandler.m */; };
 		F83F75F01A654E5A00CC8DE3 /* CCPWorkspaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75E81A654E5A00CC8DE3 /* CCPWorkspaceManager.m */; };
 		F83F75F11A654E5A00CC8DE3 /* CCPXCodeConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */; };
-		F83F75F61A65520F00CC8DE3 /* objc_dep.py in Resources */ = {isa = PBXBuildFile; fileRef = F83F75F41A65520F00CC8DE3 /* objc_dep.py */; };
-		F83F75F71A65520F00CC8DE3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F83F75F51A65520F00CC8DE3 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31F31C0B1A66016300E0D942 /* objc_dep.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = objc_dep.py; sourceTree = "<group>"; };
+		31F31C0C1A66016300E0D942 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F83F75CB1A654E0100CC8DE3 /* ObjectGraph.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjectGraph.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83F75CE1A654E0100CC8DE3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		F83F75D01A654E0100CC8DE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -42,8 +44,6 @@
 		F83F75E91A654E5A00CC8DE3 /* CCPXCodeConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPXCodeConsole.h; sourceTree = "<group>"; };
 		F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPXCodeConsole.m; sourceTree = "<group>"; };
 		F83F75EB1A654E5A00CC8DE3 /* ObjectGraph-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjectGraph-Prefix.pch"; sourceTree = "<group>"; };
-		F83F75F41A65520F00CC8DE3 /* objc_dep.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = objc_dep.py; sourceTree = "<group>"; };
-		F83F75F51A65520F00CC8DE3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31F31C0A1A66016300E0D942 /* objc_dep */ = {
+			isa = PBXGroup;
+			children = (
+				31F31C0B1A66016300E0D942 /* objc_dep.py */,
+				31F31C0C1A66016300E0D942 /* README.md */,
+			);
+			path = objc_dep;
+			sourceTree = "<group>";
+		};
 		F83F75C21A654E0100CC8DE3 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +97,7 @@
 		F83F75D21A654E0100CC8DE3 /* ObjectGraph */ = {
 			isa = PBXGroup;
 			children = (
+				31F31C0A1A66016300E0D942 /* objc_dep */,
 				F83F75F21A654E6700CC8DE3 /* Helper */,
 				F83F75D71A654E0100CC8DE3 /* ObjectGraph.h */,
 				F83F75D81A654E0100CC8DE3 /* ObjectGraph.m */,
@@ -99,7 +109,6 @@
 		F83F75D31A654E0100CC8DE3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F83F75F31A65520F00CC8DE3 /* objc_dep */,
 				F83F75EB1A654E5A00CC8DE3 /* ObjectGraph-Prefix.pch */,
 				F83F75D41A654E0100CC8DE3 /* Info.plist */,
 				F83F75D51A654E0100CC8DE3 /* ObjectGraph.xcscheme */,
@@ -124,15 +133,6 @@
 				F83F75EA1A654E5A00CC8DE3 /* CCPXCodeConsole.m */,
 			);
 			name = Helper;
-			sourceTree = "<group>";
-		};
-		F83F75F31A65520F00CC8DE3 /* objc_dep */ = {
-			isa = PBXGroup;
-			children = (
-				F83F75F41A65520F00CC8DE3 /* objc_dep.py */,
-				F83F75F51A65520F00CC8DE3 /* README.md */,
-			);
-			path = objc_dep;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,7 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F83F75F61A65520F00CC8DE3 /* objc_dep.py in Resources */,
+				31F31C0D1A66016300E0D942 /* objc_dep.py in Resources */,
 				F83F75D61A654E0100CC8DE3 /* ObjectGraph.xcscheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +209,7 @@
 				F83F75F11A654E5A00CC8DE3 /* CCPXCodeConsole.m in Sources */,
 				F83F75D91A654E0100CC8DE3 /* ObjectGraph.m in Sources */,
 				F83F75EC1A654E5A00CC8DE3 /* CCPDocumentationManager.m in Sources */,
-				F83F75F71A65520F00CC8DE3 /* README.md in Sources */,
+				31F31C0E1A66016300E0D942 /* README.md in Sources */,
 				F83F75ED1A654E5A00CC8DE3 /* CCPProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +335,7 @@
 				F83F75DE1A654E0100CC8DE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
