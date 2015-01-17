@@ -27,7 +27,6 @@
 #import "VWKShellHandler.h"
 #import "VWKWorkspaceManager.h"
 #import "VWKProject.h"
-#import "VWKXCodeConsole.h"
 
 static ObjectGraph *sharedPlugin;
 
@@ -128,7 +127,6 @@ static NSString *OPEN_EXECUTABLE = @"open";
     VWKProject *project = [VWKProject projectForKeyWindow];
     NSString *projectPath = project.directoryPath;
     NSFileManager *manager = [NSFileManager defaultManager];
-    VWKXCodeConsole *console = [VWKXCodeConsole consoleForKeyWindow];
     if(_sourceCodePath == nil || ![manager fileExistsAtPath:_sourceCodePath])
     {
         self.sourceCodePath = projectPath;
