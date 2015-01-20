@@ -103,7 +103,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
         NSMenuItem *objectGraphMenu = [[NSMenuItem alloc] initWithTitle:@"ObjectGraph" action:nil keyEquivalent:@""];
         objectGraphMenu.submenu = [[NSMenu alloc] initWithTitle:@"ObjectGraph"];
         
-        self.drawObjectGraphItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Grpah" action:@selector(drawObjectGrpah) keyEquivalent:@""];
+        self.drawObjectGraphItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Graph" action:@selector(drawObjectGrpah) keyEquivalent:@""];
         [self.drawObjectGraphItem setTarget:self];
         
         
