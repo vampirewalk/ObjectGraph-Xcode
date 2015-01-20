@@ -43,7 +43,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
 
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 
-@property (nonatomic, strong) NSMenuItem *drawObjectGrpahItem;
+@property (nonatomic, strong) NSMenuItem *drawObjectGraphItem;
 @property (nonatomic, strong) NSMenuItem *pathItem;
 
 @property (nonatomic, copy) NSString *sourceCodePath;
@@ -103,14 +103,14 @@ static NSString *OPEN_EXECUTABLE = @"open";
         NSMenuItem *objectGraphMenu = [[NSMenuItem alloc] initWithTitle:@"ObjectGraph" action:nil keyEquivalent:@""];
         objectGraphMenu.submenu = [[NSMenu alloc] initWithTitle:@"ObjectGraph"];
         
-        self.drawObjectGrpahItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Grpah" action:@selector(drawObjectGrpah) keyEquivalent:@""];
-        [self.drawObjectGrpahItem setTarget:self];
+        self.drawObjectGraphItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Grpah" action:@selector(drawObjectGrpah) keyEquivalent:@""];
+        [self.drawObjectGraphItem setTarget:self];
         
         
         self.pathItem = [[NSMenuItem alloc] initWithTitle:@"Set Source Code PATH..." action:@selector(selectPath) keyEquivalent:@""];
         [self.pathItem setTarget:self];
         
-        [[objectGraphMenu submenu] addItem:self.drawObjectGrpahItem];
+        [[objectGraphMenu submenu] addItem:self.drawObjectGraphItem];
         [[objectGraphMenu submenu] addItem:self.pathItem];
         
         
