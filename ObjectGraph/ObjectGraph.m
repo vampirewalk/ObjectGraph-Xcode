@@ -103,7 +103,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
         NSMenuItem *objectGraphMenu = [[NSMenuItem alloc] initWithTitle:@"ObjectGraph" action:nil keyEquivalent:@""];
         objectGraphMenu.submenu = [[NSMenu alloc] initWithTitle:@"ObjectGraph"];
         
-        self.drawObjectGraphItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Graph" action:@selector(drawObjectGrpah) keyEquivalent:@""];
+        self.drawObjectGraphItem = [[NSMenuItem alloc] initWithTitle:@"Draw Object Graph" action:@selector(drawObjectGraph) keyEquivalent:@""];
         [self.drawObjectGraphItem setTarget:self];
         
         
@@ -121,7 +121,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
 #pragma mark - Menu Actions
 
 // Sample Action, for menu item:
-- (void)drawObjectGrpah
+- (void)drawObjectGraph
 {
     VWKProject *project = [VWKProject projectForKeyWindow];
     NSString *projectPath = project.directoryPath;
