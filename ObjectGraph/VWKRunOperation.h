@@ -24,6 +24,9 @@
 
 @interface VWKRunOperation : NSOperation
 
+@property (strong, nonatomic) NSMutableString *standardOutputString;
+@property (strong, nonatomic) NSMutableString *standardErrorString;
+
 - (id)initWithTask:(NSTask *)task;
 
 @end

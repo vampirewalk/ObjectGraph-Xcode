@@ -39,14 +39,18 @@ static NSString *GRAPHVIZ_EXECUTABLE = @"dot";
 static NSString *MOVE_EXECUTABLE = @"mv";
 static NSString *OPEN_EXECUTABLE = @"open";
 
+typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString);
+
 @interface ObjectGraph()
-
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
-
 @property (nonatomic, strong) NSMenuItem *drawObjectGraphItem;
 @property (nonatomic, strong) NSMenuItem *pathItem;
-
 @property (nonatomic, copy) NSString *sourceCodePath;
+@property (nonatomic, copy) TaskBlock getGraphvizExecutablePathBlock;
+@property (nonatomic, copy) TaskBlock convertToPNGBlock;
+@property (nonatomic, copy) TaskBlock movePNGFileBlock;
+@property (nonatomic, copy) TaskBlock moveDOTFileBlock;
+@property (nonatomic, copy) TaskBlock openBlock;
 
 @end
 
@@ -80,6 +84,13 @@ static NSString *OPEN_EXECUTABLE = @"open";
         self.bundle = plugin;
         
         [self setDefaultSourceCodePathPath];
+        
+        [self setupGetGraphvizExecutablePathBlock];
+        [self setupConvertToPNGBlock];
+        [self setupMovePNGFileBlock];
+        [self setupMoveDOTFileBlock];
+        [self setupOpenBlock];
+        
         
         // Create menu items, initialize UI, etc.
         [self addMenuItems];
@@ -123,57 +134,17 @@ static NSString *OPEN_EXECUTABLE = @"open";
 // Sample Action, for menu item:
 - (void)drawObjectGraph
 {
-    VWKProject *project = [VWKProject projectForKeyWindow];
-    NSString *projectPath = project.directoryPath;
-    
-    if([self isSourceCodePathValid])
+    if([self isValidSourceCodePath])
     {
-        self.sourceCodePath = projectPath;
+        self.sourceCodePath = self.projectPath;
     }
     
-    NSString *pngFileName = [self pngFileName];
-    NSString *dotFileName = [self dotFileName];
-    
     NSString *dotFileScriptPath = [[ObjectGraph pluginBundle] pathForResource:@"objc_dep" ofType:@"py"];
-    
-    __weak __typeof(&*self)weakSelf = self;
-    
     if (dotFileScriptPath.length) {
-        void(^openBlock)(NSTask *t) = ^(NSTask *t){
-            [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
-                                    withArgs:@[pngFileName]
-                                   directory:projectPath
-                                  completion:nil];
-        };
-        
-        void(^moveDOTFileBlock)(NSTask *t) = ^(NSTask *t){
-            __strong __typeof(&*weakSelf)strongSelf = weakSelf;
-            [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
-                                    withArgs:@[dotFileName, projectPath]
-                                   directory:strongSelf.sourceCodePath
-                                  completion:openBlock];
-        };
-        
-        void(^movePNGFileBlock)(NSTask *t) = ^(NSTask *t){
-            __strong __typeof(&*weakSelf)strongSelf = weakSelf;
-            [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
-                                    withArgs:@[pngFileName, projectPath]
-                                   directory:strongSelf.sourceCodePath
-                                  completion:moveDOTFileBlock];
-        };
-        
-        void(^convertToPNGBlock)(NSTask *t) = ^(NSTask *t){
-            __strong __typeof(&*weakSelf)strongSelf = weakSelf;
-            [VWKShellHandler runShellCommand:[USER_LOCAL_BIN_PATH stringByAppendingPathComponent:GRAPHVIZ_EXECUTABLE]
-                                    withArgs:@[@"-Tpng", dotFileName, @"-o", pngFileName]
-                                   directory:strongSelf.sourceCodePath
-                                  completion:movePNGFileBlock];
-        };
-        
         [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
-                                withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", dotFileName]
+                                withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", self.dotFileName]
                                directory:_sourceCodePath
-                              completion:convertToPNGBlock];
+                              completion:self.getGraphvizExecutablePathBlock];
     }
 }
 
@@ -204,10 +175,98 @@ static NSString *OPEN_EXECUTABLE = @"open";
     return pngFileName;
 }
 
-- (BOOL)isSourceCodePathValid
+- (NSString *)projectPath
+{
+    VWKProject *project = [VWKProject projectForKeyWindow];
+    NSString *projectPath = project.directoryPath;
+    return projectPath;
+}
+
+- (BOOL)isValidSourceCodePath
 {
     NSFileManager *manager = [NSFileManager defaultManager];
     return _sourceCodePath == nil || ![manager fileExistsAtPath:_sourceCodePath];
+}
+
+- (void)setupGetGraphvizExecutablePathBlock
+{
+    NSDictionary *environmentDict = [[NSProcessInfo processInfo] environment];
+    NSString *shellString = [environmentDict objectForKey:@"SHELL"];
+    
+    NSArray *args = @[@"-l",
+                      @"-c",
+                      @"which dot", //Assuming git is the launch path you want to run
+                      ];
+    __weak __typeof(&*self)weakSelf = self;
+    self.getGraphvizExecutablePathBlock = ^(NSTask *t,
+                               NSString *standardOutputString,
+                               NSString *standardErrorString)
+    {
+        __strong __typeof(&*weakSelf)strongSelf = weakSelf;
+        [VWKShellHandler runShellCommand:shellString
+                                withArgs:args
+                               directory:strongSelf.sourceCodePath
+                              completion:strongSelf.convertToPNGBlock];
+    };
+}
+
+- (void)setupConvertToPNGBlock
+{
+    __weak __typeof(&*self)weakSelf = self;
+    self.convertToPNGBlock = ^(NSTask *t,
+                               NSString *standardOutputString,
+                               NSString *standardErrorString){
+        __strong __typeof(&*weakSelf)strongSelf = weakSelf;
+        if (standardOutputString.length > 0) {
+            NSString *GRAPHVIZ_EXECUTABLE_PATH = [standardOutputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            [VWKShellHandler runShellCommand:GRAPHVIZ_EXECUTABLE_PATH
+                                    withArgs:@[@"-Tpng", strongSelf.dotFileName, @"-o", strongSelf.pngFileName]
+                                   directory:strongSelf.sourceCodePath
+                                  completion:strongSelf.movePNGFileBlock];
+        }
+    };
+}
+
+- (void)setupMovePNGFileBlock
+{
+    __weak __typeof(&*self)weakSelf = self;
+    self.movePNGFileBlock = ^(NSTask *t,
+                              NSString *standardOutputString,
+                              NSString *standardErrorString){
+        __strong __typeof(&*weakSelf)strongSelf = weakSelf;
+        [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
+                                withArgs:@[strongSelf.pngFileName, strongSelf.projectPath]
+                               directory:strongSelf.sourceCodePath
+                              completion:strongSelf.moveDOTFileBlock];
+    };
+}
+
+- (void)setupMoveDOTFileBlock
+{
+    __weak __typeof(&*self)weakSelf = self;
+    self.moveDOTFileBlock = ^(NSTask *t,
+                              NSString *standardOutputString,
+                              NSString *standardErrorString){
+        __strong __typeof(&*weakSelf)strongSelf = weakSelf;
+        [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
+                                withArgs:@[strongSelf.dotFileName, strongSelf.projectPath]
+                               directory:strongSelf.sourceCodePath
+                              completion:strongSelf.openBlock];
+    };
+}
+
+- (void)setupOpenBlock
+{
+    __weak __typeof(&*self)weakSelf = self;
+    self.openBlock = ^(NSTask *t,
+                       NSString *standardOutputString,
+                       NSString *standardErrorString){
+        __strong __typeof(&*weakSelf)strongSelf = weakSelf;
+        [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
+                                withArgs:@[strongSelf.pngFileName]
+                               directory:strongSelf.projectPath
+                              completion:nil];
+    };
 }
 
 - (void)dealloc
