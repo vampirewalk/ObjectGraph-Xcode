@@ -51,11 +51,23 @@
 	if (self) {
 		self.xcodeConsole = [VWKXCodeConsole consoleForKeyWindow];
 		self.task = task;
-        self.standardOutputString = [NSMutableString string];
-        self.standardErrorString = [NSMutableString string];
 	}
 	return self;
 }
+
+- (instancetype)initWithTask:(NSTask *)task standardOutputString:(NSMutableString *) aStandardOutputString standardErrorString:(NSMutableString*) aStandardErrorString;
+{
+    self = [super init];
+    if (self) {
+        self.xcodeConsole = [VWKXCodeConsole consoleForKeyWindow];
+        self.task = task;
+        self.standardOutputString = aStandardOutputString;
+        self.standardErrorString = aStandardErrorString;
+    }
+    return self;
+}
+
+
 
 - (BOOL)isExecuting
 {

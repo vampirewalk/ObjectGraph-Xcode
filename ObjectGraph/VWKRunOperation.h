@@ -28,5 +28,7 @@
 @property (strong, nonatomic) NSMutableString *standardErrorString;
 
 - (id)initWithTask:(NSTask *)task;
+- (instancetype)initWithTask:(NSTask *)task standardOutputString:(NSMutableString *) aStandardOutputString standardErrorString:(NSMutableString*) aStandardErrorString;
+
 
 @end

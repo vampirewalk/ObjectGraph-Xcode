@@ -47,13 +47,13 @@ static NSOperationQueue *operationQueue;
 	task.launchPath = command;
 	task.arguments  = args;
     
+    NSMutableString *standardOutputString = [NSMutableString string];
+    NSMutableString *standardErrorString = [NSMutableString string];
     
-	VWKRunOperation *operation = [[VWKRunOperation alloc] initWithTask:task];
-    __weak VWKRunOperation *weakOperation = operation;
+	VWKRunOperation *operation = [[VWKRunOperation alloc] initWithTask:task standardOutputString:standardOutputString standardErrorString:standardErrorString];
     operation.completionBlock = ^{
-        __strong VWKRunOperation *strongOperation = weakOperation;
         if (completion) {
-            completion(task, strongOperation.standardOutputString, strongOperation.standardErrorString);
+            completion(task, standardOutputString, standardErrorString);
         }
     };
 	[operationQueue addOperation:operation];
