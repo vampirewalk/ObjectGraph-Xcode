@@ -126,7 +126,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
     VWKProject *project = [VWKProject projectForKeyWindow];
     NSString *projectPath = project.directoryPath;
     
-    if([self isSourceCodePathValid])
+    if([self isValidSourceCodePath])
     {
         self.sourceCodePath = projectPath;
     }
@@ -139,14 +139,14 @@ static NSString *OPEN_EXECUTABLE = @"open";
     __weak __typeof(&*self)weakSelf = self;
     
     if (dotFileScriptPath.length) {
-        void(^openBlock)(NSTask *t) = ^(NSTask *t){
+        void(^openBlock)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString) = ^(NSTask *t, NSString *standardOutputString, NSString *standardErrorString){
             [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
                                     withArgs:@[pngFileName]
                                    directory:projectPath
                                   completion:nil];
         };
         
-        void(^moveDOTFileBlock)(NSTask *t) = ^(NSTask *t){
+        void(^moveDOTFileBlock)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString) = ^(NSTask *t, NSString *standardOutputString, NSString *standardErrorString){
             __strong __typeof(&*weakSelf)strongSelf = weakSelf;
             [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
                                     withArgs:@[dotFileName, projectPath]
@@ -154,7 +154,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
                                   completion:openBlock];
         };
         
-        void(^movePNGFileBlock)(NSTask *t) = ^(NSTask *t){
+        void(^movePNGFileBlock)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString) = ^(NSTask *t, NSString *standardOutputString, NSString *standardErrorString){
             __strong __typeof(&*weakSelf)strongSelf = weakSelf;
             [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
                                     withArgs:@[pngFileName, projectPath]
@@ -162,7 +162,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
                                   completion:moveDOTFileBlock];
         };
         
-        void(^convertToPNGBlock)(NSTask *t) = ^(NSTask *t){
+        void(^convertToPNGBlock)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString) = ^(NSTask *t, NSString *standardOutputString, NSString *standardErrorString){
             __strong __typeof(&*weakSelf)strongSelf = weakSelf;
             [VWKShellHandler runShellCommand:[USER_LOCAL_BIN_PATH stringByAppendingPathComponent:GRAPHVIZ_EXECUTABLE]
                                     withArgs:@[@"-Tpng", dotFileName, @"-o", pngFileName]
@@ -170,10 +170,23 @@ static NSString *OPEN_EXECUTABLE = @"open";
                                   completion:movePNGFileBlock];
         };
         
-        [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
-                                withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", dotFileName]
+        NSDictionary *environmentDict = [[NSProcessInfo processInfo] environment];
+        NSString *shellString = [environmentDict objectForKey:@"SHELL"];
+        
+        NSArray *args = [NSArray arrayWithObjects:@"-l",
+                         @"-c",
+                         @"which dot", //Assuming git is the launch path you want to run
+                         nil];
+        
+        [VWKShellHandler runShellCommand:[NSString stringWithFormat:@"/bin/%@", shellString]
+                                withArgs:args
                                directory:_sourceCodePath
                               completion:convertToPNGBlock];
+        
+//        [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:PYTHON_EXECUTABLE]
+//                                withArgs:@[dotFileScriptPath, _sourceCodePath, @"-o", dotFileName]
+//                               directory:_sourceCodePath
+//                              completion:convertToPNGBlock];
     }
 }
 
@@ -204,7 +217,7 @@ static NSString *OPEN_EXECUTABLE = @"open";
     return pngFileName;
 }
 
-- (BOOL)isSourceCodePathValid
+- (BOOL)isValidSourceCodePath
 {
     NSFileManager *manager = [NSFileManager defaultManager];
     return _sourceCodePath == nil || ![manager fileExistsAtPath:_sourceCodePath];

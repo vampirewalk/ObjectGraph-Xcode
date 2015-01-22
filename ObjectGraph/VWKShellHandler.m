@@ -31,7 +31,7 @@ static NSOperationQueue *operationQueue;
 
 @implementation VWKShellHandler
 
-+ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t))completion
++ (void)runShellCommand:(NSString *)command withArgs:(NSArray *)args directory:(NSString *)directory completion:(void (^)(NSTask *t, NSString *standardOutputString, NSString *standardErrorString))completion
 {
 	if (operationQueue == nil) {
 		operationQueue = [NSOperationQueue new];
@@ -49,9 +49,11 @@ static NSOperationQueue *operationQueue;
     
     
 	VWKRunOperation *operation = [[VWKRunOperation alloc] initWithTask:task];
+    __weak VWKRunOperation *weakOperation = operation;
     operation.completionBlock = ^{
+        __strong VWKRunOperation *strongOperation = weakOperation;
         if (completion) {
-            completion(task);
+            completion(task, strongOperation.standardOutputString, strongOperation.standardErrorString);
         }
     };
 	[operationQueue addOperation:operation];

@@ -24,6 +24,9 @@
 
 @interface VWKRunOperation : NSOperation
 
+@property (copy, nonatomic) NSString *standardOutputString;
+@property (copy, nonatomic) NSString *standardErrorString;
+
 - (id)initWithTask:(NSTask *)task;
 
 @end

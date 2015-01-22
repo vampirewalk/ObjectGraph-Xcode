@@ -133,6 +133,7 @@
                                                                                                         standardOutputBuffer = [self writePipeBuffer:standardOutputBuffer];
                                                                                                     } else {
                                                                                                         [self appendLine:standardOutputBuffer];
+                                                                                                        self.standardOutputString = standardOutputBuffer;
                                                                                                         [NSNotificationCenter.defaultCenter removeObserver:self.taskStandardOutDataAvailableObserver];
                                                                                                         self.taskStandardOutDataAvailableObserver = nil;
                                                                                                         [self checkAndSetFinished];
@@ -150,6 +151,7 @@
                                                                                                           standardErrorBuffer = [self writePipeBuffer:standardErrorBuffer];
                                                                                                       } else {
                                                                                                           [self appendLine:standardErrorBuffer];
+                                                                                                          self.standardErrorString = standardErrorBuffer;
                                                                                                           [NSNotificationCenter.defaultCenter removeObserver:self.taskStandardErrorDataAvailableObserver];
                                                                                                           self.taskStandardErrorDataAvailableObserver = nil;
                                                                                                           [self checkAndSetFinished];
