@@ -51,6 +51,8 @@
 	if (self) {
 		self.xcodeConsole = [VWKXCodeConsole consoleForKeyWindow];
 		self.task = task;
+        self.standardOutputString = [NSMutableString string];
+        self.standardErrorString = [NSMutableString string];
 	}
 	return self;
 }
@@ -131,6 +133,7 @@
                                                                                                         [standardOutputBuffer appendString:data];
                                                                                                         [fileHandle waitForDataInBackgroundAndNotify];
                                                                                                         standardOutputBuffer = [self writePipeBuffer:standardOutputBuffer];
+                                                                                                            [self.standardOutputString appendString:data];
                                                                                                     } else {
                                                                                                         [self appendLine:standardOutputBuffer];
                                                                                                         self.standardOutputString = standardOutputBuffer;
@@ -149,6 +152,7 @@
                                                                                                           [standardErrorBuffer appendString:data];
                                                                                                           [fileHandle waitForDataInBackgroundAndNotify];
                                                                                                           standardErrorBuffer = [self writePipeBuffer:standardErrorBuffer];
+                                                                                                          [self.standardErrorString appendString:data];
                                                                                                       } else {
                                                                                                           [self appendLine:standardErrorBuffer];
                                                                                                           self.standardErrorString = standardErrorBuffer;
