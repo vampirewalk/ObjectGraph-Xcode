@@ -47,8 +47,8 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
 @property (nonatomic, strong) NSMenuItem *pathItem;
 @property (nonatomic, copy) NSString *sourceCodePath;
 @property (nonatomic, copy) TaskBlock getGraphvizExecutablePathBlock;
-@property (nonatomic, copy) TaskBlock convertToPNGBlock;
-@property (nonatomic, copy) TaskBlock movePNGFileBlock;
+@property (nonatomic, copy) TaskBlock convertToPDFBlock;
+@property (nonatomic, copy) TaskBlock movePDFFileBlock;
 @property (nonatomic, copy) TaskBlock moveDOTFileBlock;
 @property (nonatomic, copy) TaskBlock openBlock;
 
@@ -86,8 +86,8 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
         [self setDefaultSourceCodePathPath];
         
         [self setupGetGraphvizExecutablePathBlock];
-        [self setupConvertToPNGBlock];
-        [self setupMovePNGFileBlock];
+        [self setupConvertToPDFBlock];
+        [self setupMovePDFFileBlock];
         [self setupMoveDOTFileBlock];
         [self setupOpenBlock];
         
@@ -168,11 +168,11 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
     return dotFileName;
 }
 
-- (NSString *)pngFileName
+- (NSString *)pdfFileName
 {
     VWKProject *project = [VWKProject projectForKeyWindow];
-    NSString *pngFileName = [project.projectName stringByAppendingPathExtension:@"png"];
-    return pngFileName;
+    NSString *pdfFileName = [project.projectName stringByAppendingPathExtension:@"pdf"];
+    return pdfFileName;
 }
 
 - (NSString *)projectPath
@@ -206,36 +206,36 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
         [VWKShellHandler runShellCommand:shellString
                                 withArgs:args
                                directory:strongSelf.sourceCodePath
-                              completion:strongSelf.convertToPNGBlock];
+                              completion:strongSelf.convertToPDFBlock];
     };
 }
 
-- (void)setupConvertToPNGBlock
+- (void)setupConvertToPDFBlock
 {
     __weak __typeof(&*self)weakSelf = self;
-    self.convertToPNGBlock = ^(NSTask *t,
+    self.convertToPDFBlock = ^(NSTask *t,
                                NSString *standardOutputString,
                                NSString *standardErrorString){
         __strong __typeof(&*weakSelf)strongSelf = weakSelf;
         if (standardOutputString.length > 0) {
             NSString *GRAPHVIZ_EXECUTABLE_PATH = [standardOutputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             [VWKShellHandler runShellCommand:GRAPHVIZ_EXECUTABLE_PATH
-                                    withArgs:@[@"-Tpng", strongSelf.dotFileName, @"-o", strongSelf.pngFileName]
+                                    withArgs:@[@"-Tpdf", strongSelf.dotFileName, @"-o", strongSelf.pdfFileName]
                                    directory:strongSelf.sourceCodePath
-                                  completion:strongSelf.movePNGFileBlock];
+                                  completion:strongSelf.movePDFFileBlock];
         }
     };
 }
 
-- (void)setupMovePNGFileBlock
+- (void)setupMovePDFFileBlock
 {
     __weak __typeof(&*self)weakSelf = self;
-    self.movePNGFileBlock = ^(NSTask *t,
+    self.movePDFFileBlock = ^(NSTask *t,
                               NSString *standardOutputString,
                               NSString *standardErrorString){
         __strong __typeof(&*weakSelf)strongSelf = weakSelf;
         [VWKShellHandler runShellCommand:[BIN_PATH stringByAppendingPathComponent:MOVE_EXECUTABLE]
-                                withArgs:@[strongSelf.pngFileName, strongSelf.projectPath]
+                                withArgs:@[strongSelf.pdfFileName, strongSelf.projectPath]
                                directory:strongSelf.sourceCodePath
                               completion:strongSelf.moveDOTFileBlock];
     };
@@ -263,7 +263,7 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
                        NSString *standardErrorString){
         __strong __typeof(&*weakSelf)strongSelf = weakSelf;
         [VWKShellHandler runShellCommand:[USER_BIN_PATH stringByAppendingPathComponent:OPEN_EXECUTABLE]
-                                withArgs:@[strongSelf.pngFileName]
+                                withArgs:@[strongSelf.pdfFileName]
                                directory:strongSelf.projectPath
                               completion:nil];
     };
