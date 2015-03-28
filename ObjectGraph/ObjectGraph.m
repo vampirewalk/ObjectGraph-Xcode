@@ -164,14 +164,14 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
 - (NSString *)dotFileName
 {
     VWKProject *project = [VWKProject projectForKeyWindow];
-    NSString *dotFileName = [project.projectName stringByAppendingString:@".dot"];
+    NSString *dotFileName = [project.projectName stringByAppendingPathExtension:@"dot"];
     return dotFileName;
 }
 
 - (NSString *)pngFileName
 {
     VWKProject *project = [VWKProject projectForKeyWindow];
-    NSString *pngFileName = [project.projectName stringByAppendingString:@".png"];
+    NSString *pngFileName = [project.projectName stringByAppendingPathExtension:@"png"];
     return pngFileName;
 }
 
