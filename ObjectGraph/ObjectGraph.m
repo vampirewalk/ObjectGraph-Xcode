@@ -93,7 +93,9 @@ typedef void(^TaskBlock)(NSTask *t, NSString *standardOutputString, NSString *st
         
         
         // Create menu items, initialize UI, etc.
-        [self addMenuItems];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self addMenuItems];
+        }];
     }
     return self;
 }
