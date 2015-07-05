@@ -1,5 +1,4 @@
 ## ObjectGraph
-============
 
 [![Twitter: @vampirewalk666](https://img.shields.io/badge/contact-%40vampirewalk-blue.svg)](https://twitter.com/vampirewalk666)
 
