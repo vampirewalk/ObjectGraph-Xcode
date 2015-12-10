@@ -1,1 +1,3 @@
 language: objective-c
+xcode_project: ObjectGraph-Xcode.xcodeproj
+xcode_scheme: ObjectGraph-Xcode
