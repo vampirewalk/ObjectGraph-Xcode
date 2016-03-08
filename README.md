@@ -10,6 +10,10 @@ This plugin is based on [objc_dep](https://github.com/nst/objc_dep) and [Graphvi
 
 ![Example](https://raw.githubusercontent.com/vampirewalk/ObjectGraph-Xcode/master/ObjectGraph.png)
 
+- Black arrows: imports
+- <font color="red">Red arrows</font>: .pch imports
+- <font color="blue">Blue arrows</font>: two ways imports
+
 ## Usage
 The default path of source code parsing is project root path, you can set new path by clicking "Set Source Path Path...".
 For example, if you just want to parse your product class, not test class or external library class in Pods directory, you can set path to directory which contains your product class and execute "Draw Object Graph" again.
